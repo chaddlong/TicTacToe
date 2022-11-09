@@ -23,9 +23,11 @@ but assigning every grid value to check manually was time consuming. Overall, th
 to work on and ensuring i utilized an abstract as well as an interface was a challenge, admittedly one we met.
 
 ## Compiling and Usage
-cd src
-javac tictactoe/TicTacToeGUI.java
+```
+cd src 
+javac tictactoe/TicTacToeGUI.java 
 java tictactoe/TicTacToeGUI
+```
 
 ## Sources used
 The GUI was supplied to me for a previous project. However, this project is heavily modified in order

@@ -3,11 +3,11 @@ package tictactoe;
 import java.awt.Point;
 /**
  * 
- * @author Luca
+ * @authors Luca Bova, Chad Long
  *
  */
 public class TicTacToeGame implements TicTacToe {
-
+// All main parameters established
     private BoardChoice [][] board;
     private GameState state;
     private BoardChoice last_move;
@@ -33,7 +33,11 @@ public class TicTacToeGame implements TicTacToe {
         move_count = 0;
         moves = new Point[9];
     }
-
+/**
+*Choose allows you to select a tile and checks if something is on it. It checks to see if it is whithin the grid and if it is a legal move to make, and if so it places.
+*It then increases move count and checks to see if the game is over.
+*/
+    
     public boolean choose(BoardChoice player, int row, int col) {
         if (state != GameState.IN_PROGRESS) return false;
         if (player == BoardChoice.OPEN) return false;
@@ -47,7 +51,7 @@ public class TicTacToeGame implements TicTacToe {
         gameOver();
         return true;
     }
-
+//Checks the board choice to see if its usable.
     private BoardChoice tester(int r, int c, int dr, int dc) {
         // board[r,c], board[r+dr,c+dc], board[r+2*dr,c+2*dc] are
         // three board cells in a row - horiz, vert, or diag
@@ -59,7 +63,10 @@ public class TicTacToeGame implements TicTacToe {
         }
         return BoardChoice.OPEN;
     }
-
+/**
+*this checks to see if the game is over by checking if either 3 Xs or Os are in a row OR the movecount for the game has reached the maximum it can reach.
+*it does this by systematically checking every single tile and possible win permutation every time its called.
+*/
     public boolean gameOver() {
         if (state != GameState.IN_PROGRESS) return true;
         // top row
@@ -86,11 +93,11 @@ public class TicTacToeGame implements TicTacToe {
         return false;
     }
 
-
+//gets the current gamestate, whether in progress, beggining, or over.
     public GameState getGameState() {
     	return state;
     }
-
+//generates gamegrid.
     public BoardChoice[][] getGameGrid() {
     	BoardChoice [][] copyBoard = new BoardChoice[3][3];
     	for(int i=0; i < 3; i++) {
@@ -100,7 +107,7 @@ public class TicTacToeGame implements TicTacToe {
        }
     	return copyBoard;
     }
-
+//gets the movecount and game moves
     public Point[] getMoves() {
         Point[] copyMoves = new Point[move_count];
         for(int i=0; i < move_count; i++) {
